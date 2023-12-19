@@ -1,10 +1,10 @@
-import { IoLogoGithub, IoLogoGoogle } from "react-icons/io5";
+import { IoLogoFacebook, IoLogoGithub, IoLogoGoogle } from "react-icons/io5";
 import useAuth from "../../Utils/UseAuth";
 import toast, { Toaster } from "react-hot-toast";
 
 
 const SocailMediaLogin = () => {
-    const {googleLogin, githubLogin} = useAuth()
+    const {googleLogin, githubLogin, facebookLogin} = useAuth()
 
     const handleSocailMediaLogin =(media)=>{
         media().then(()=> {
@@ -32,6 +32,12 @@ const SocailMediaLogin = () => {
             hover:bg-blue-100 bg-red-100 w-fit rounded-full ">
 
             <IoLogoGithub className="text-2xl"/>
+            </div>
+            <div onClick={()=> handleSocailMediaLogin(facebookLogin)} className="p-2 text-blue-500
+            cursor-pointer
+            hover:bg-blue-100 bg-red-100 w-fit rounded-full ">
+
+            <IoLogoFacebook className="text-2xl"/>
             </div>
 
         </div>

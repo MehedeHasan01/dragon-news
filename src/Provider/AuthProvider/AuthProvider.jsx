@@ -1,4 +1,4 @@
-import {  GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import {  FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import PropTypes from 'prop-types';
 
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import auth from '../../Config/firebase.config';
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider()
 const githubProvider = new GithubAuthProvider()
+const facebookProvider = new FacebookAuthProvider()
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoding] = useState(true)
@@ -44,6 +45,10 @@ const AuthProvider = ({children}) => {
     // Login Github
     const githubLogin =()=>{
         return signInWithPopup(auth, githubProvider)
+    };
+    // Login Facebbok
+    const facebookLogin =()=>{
+        return signInWithPopup(auth, facebookProvider)
     }
 
 
@@ -67,7 +72,8 @@ const AuthProvider = ({children}) => {
         socialRegister,
         resetPassword,
         googleLogin,
-        githubLogin
+        githubLogin,
+        facebookLogin
 
 
     }
